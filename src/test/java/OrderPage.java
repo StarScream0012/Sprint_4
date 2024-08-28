@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,7 +12,7 @@ public class OrderPage {
     private WebDriver driver;
     By cookieAcceptButton = By.id("rcc-confirm-button");
     By orderButtonFirst = By.xpath("//button[@class='Button_Button__ra12g']");
-    By orderButtonSecond = By.xpath("//button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp']");
+    By orderButtonSecond = By.xpath("//div[@class='Home_FinishButton__1_cWm']/button");
     By firtsNameInput = By.xpath("//input[@placeholder='* Имя']");
     By secondNameInput = By.xpath("//input[@placeholder='* Фамилия']");
     By orderAdressInput = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
@@ -37,8 +38,8 @@ public class OrderPage {
         driver.findElement(orderButtonFirst).click();
     }
     public void clickButtonSecond(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement buttonElement = wait.until(ExpectedConditions.visibilityOfElementLocated(orderButtonSecond));
+        WebElement buttonElement = driver.findElement(orderButtonSecond);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", buttonElement);
         buttonElement.click();
     }
     //Проверка на отображение хедера форма заказа
@@ -96,10 +97,6 @@ public class OrderPage {
         driver.findElement(commentInput).sendKeys(comment);
     }
 
-    public void clickOrderButton() {
-        driver.findElement(orderButton).click();
-    }
-
     public void confirmOrder() {
         driver.findElement(orderButton).click();
         driver.findElement(By.xpath("//div[contains(text(),'Хотите оформить заказ?')]")).click();
@@ -108,9 +105,6 @@ public class OrderPage {
 
     public void checkCreatedOrder(){
         driver.findElement(By.xpath("//div[contains(text(),'Заказ оформлен')]")).isDisplayed();
-    }
-    public void clickShowStatusButton() {
-        driver.findElement(showStatusButton).click();
     }
 
 }
