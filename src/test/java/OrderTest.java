@@ -25,6 +25,7 @@ public class OrderTest {
         ChromeOptions options = new ChromeOptions();
         //Run теста без запуска браузера
         //  options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
+       // options.setBinary("C:/chrome2/chrome-win64/chrome.exe");
         driver = new ChromeDriver(options);
         // переход на страницу тестового приложения
         driver.get("https://qa-scooter.praktikum-services.ru/");
@@ -67,7 +68,7 @@ public class OrderTest {
         order2.time = "сутки";
         order2.entry = 1;
         return new Object[][]{
-                // {order1},
+                {order1},
                 {order2}
         };
     }
