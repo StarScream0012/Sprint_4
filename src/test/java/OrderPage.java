@@ -96,10 +96,6 @@ public class OrderPage {
         driver.findElement(commentInput).sendKeys(comment);
     }
 
-    public void clickOrderButton() {
-        driver.findElement(orderButton).click();
-    }
-
     public void confirmOrder() {
         driver.findElement(orderButton).click();
         driver.findElement(By.xpath("//div[contains(text(),'Хотите оформить заказ?')]")).click();
@@ -108,9 +104,6 @@ public class OrderPage {
 
     public void checkCreatedOrder(){
         driver.findElement(By.xpath("//div[contains(text(),'Заказ оформлен')]")).isDisplayed();
-    }
-    public void clickShowStatusButton() {
-        driver.findElement(showStatusButton).click();
     }
 
 }

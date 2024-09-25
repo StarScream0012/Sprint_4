@@ -1,33 +1,16 @@
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
 @RunWith(Parameterized.class)
 public class OrderTest {
     private WebDriver driver;
     OrderData orderData;
-    /* private final String firstName;
-    private final String secondName;
-    private final String address;
-    private final String metroStation;
-    private final String phone;
-    private final String date;
-    private final String color;
-    private final String comment;
-*/
    public OrderTest(OrderData orderData){
         this.orderData=orderData;
    }
@@ -42,19 +25,6 @@ public class OrderTest {
         // переход на страницу тестового приложения
         driver.get("https://qa-scooter.praktikum-services.ru/");
     }
-
-    /*  @Before
-    public void setUp(){
-        FirefoxOptions options = new FirefoxOptions();
-        //Run теста без запуска браузера
-         // options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        //Выбранный браузер
-        options.setBinary("C:/Program Files/Mozilla Firefox/firefox.exe");
-        driver = new FirefoxDriver(options);
-        // переход на страницу тестового приложения
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-    }
-*/
     @Parameterized.Parameters
     public static Object[][] orders() {
         //Вопросы и ответы, проверка на правильность ответа

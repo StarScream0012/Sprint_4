@@ -25,8 +25,6 @@ public class MainPageTest {
         ChromeOptions options = new ChromeOptions();
         //Run теста без запуска браузера
         options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        //Выбранный браузер
-        options.setBinary("C:/chrome2/chrome-win64/chrome.exe");
         driver = new ChromeDriver(options);
         // переход на страницу тестового приложения
         driver.get("https://qa-scooter.praktikum-services.ru/");
